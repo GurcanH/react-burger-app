@@ -92,30 +92,32 @@ class BurgerBuilder extends Component {
   };
   purchaseContinueHandler = () => {
     //  alert('You continue!');
-    this.setState({ loading: true });
+    // this.setState({ loading: true });
 
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: "Gurcan Hamali",
-        address: {
-          street: "Collins",
-          zipCode: "3008",
-          country: "Australia",
-        },
-        email: "gurcanhamali@gurcan.com",
-      },
-      deliveryMethod: "fastest",
-    };
-    axios
-      .post("/orders.json", order)
-      .then((response) => {
-        this.setState({ loading: false, purchasing: false });
-      })
-      .catch((error) => {
-        this.setState({ loading: false, purchasing: false });
-      });
+    // const order = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: "Gurcan Hamali",
+    //     address: {
+    //       street: "Collins",
+    //       zipCode: "3008",
+    //       country: "Australia",
+    //     },
+    //     email: "gurcanhamali@gurcan.com",
+    //   },
+    //   deliveryMethod: "fastest",
+    // };
+    // axios
+    //   .post("/orders.json", order)
+    //   .then((response) => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   })
+    //   .catch((error) => {
+    //     this.setState({ loading: false, purchasing: false });
+    //   });
+    console.log(this.props);
+    this.props.history.push('/checkout');
   };
   render() {
     const disabledInfo = {
