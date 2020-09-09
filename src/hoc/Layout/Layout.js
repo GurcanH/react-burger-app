@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {connect} from "react-redux";
 
 import Auxi from "../Auxi/Auxi";
 import classes from "./Layout.module.css";
@@ -23,7 +24,9 @@ class Layout extends Component {
   render() {
     return (
       <Auxi>
-        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+        <Toolbar 
+          isAuth= {this.props.isAuthenticated}
+          drawerToggleClicked={this.sideDrawerToggleHandler} />
         <SideDrawer
           open={this.state.showSideDrawer}
           closed={this.sideDrawerCloseHandler}
@@ -34,4 +37,9 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+const mapStateToProps = state => {
+  return { 
+    isAuthenticated: state.auth.token !== null
+  }
+}
+export default connect(mapStateToProps)(Layout);
